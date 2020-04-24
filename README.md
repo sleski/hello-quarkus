@@ -3,11 +3,11 @@
 Based on this article:
 https://blog.doubleslash.de/how-to-deploy-a-native-quarkus-application-on-heroku/
 
-Steps:
+# Steps:
 
-** build native image
+## build native image
 
-mvn package -Pnative -Dquarkus.native.container-build=true
+## mvn package -Pnative -Dquarkus.native.container-build=true
 
 ** build docker image
 
