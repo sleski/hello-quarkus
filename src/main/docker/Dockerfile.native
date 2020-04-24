@@ -26,5 +26,5 @@ RUN chmod 775 /work /work/application \
 
 USER 1001
 
-CMD ["./application", "-Dquarkus.http.host=0.0.0.0", -Dquarkus.http.port=${PORT}]
+CMD ["./application", "-Dquarkus.http.host=0.0.0.0", "-Dquarkus.http.port=${PORT}"]
 
