@@ -7,20 +7,15 @@ https://blog.doubleslash.de/how-to-deploy-a-native-quarkus-application-on-heroku
 
 ## build native image
 
-## mvn package -Pnative -Dquarkus.native.container-build=true
+* mvn package -Pnative -Dquarkus.native.container-build=true
 
-** build docker image
+## build docker image
+* docker build -f src/main/docker/Dockerfile.native -t quarkus/hello-quarkus .
 
-docker build -f src/main/docker/Dockerfile.native -t quarkus/hello-quarkus .
+## heroku part:
 
-** heroku part:
-
-heroku login
-
-heroku container:login
-
-docker tag quarkus/hello-quarkus registry.heroku.com/hello-quarkus/web
-
-docker push registry.heroku.com/hello-quarkus/web
-
-heroku container:release web -a hello-quarkus
+* heroku login
+* heroku container:login
+* docker tag quarkus/hello-quarkus registry.heroku.com/hello-quarkus/web
+* docker push registry.heroku.com/hello-quarkus/web
+* heroku container:release web -a hello-quarkus
