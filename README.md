@@ -21,3 +21,4 @@ https://blog.doubleslash.de/how-to-deploy-a-native-quarkus-application-on-heroku
 * heroku create hello-quarkus --region eu (this only once, to create the app)
 * docker push registry.heroku.com/hello-quarkus/web
 * heroku container:release web -a hello-quarkus
+
