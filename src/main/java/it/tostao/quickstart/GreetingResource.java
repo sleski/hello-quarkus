@@ -8,7 +8,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -26,9 +25,9 @@ public class GreetingResource {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String hello() {
 		var imagePath = Paths.get(imageLocation + FILE_NAME);
-		boolean existsAndIsReadable = Files.isReadable(imagePath) && Files.isRegularFile(imagePath);
+		var existsAndIsReadable = Files.isReadable(imagePath) && Files.isRegularFile(imagePath);
 		log.info("existsAndIsReadable - {}, imagePath - {}", existsAndIsReadable, imagePath);
-		File file = imagePath.toFile();
+		var file = imagePath.toFile();
 		return "File size is = " + file.length();
 	}
 }
