@@ -1,12 +1,10 @@
 {
-	"resources": {
-		"includes": [
-			{
-				"pattern": "IMG_3_3M\\.jpg$"
-			},
-			{
-				"pattern": "Resources2\\.txt$"
-			}
-		]
-	}
+	"resources": [
+		{
+			"pattern": "Resource2.txt"
+		},
+		{
+			"pattern": "IMG_3_3M.jpg"
+		}
+	]
 }

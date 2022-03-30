@@ -1,30 +1,34 @@
 package it.tostao.quickstart;
 
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.io.File;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.time.LocalDateTime;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 @Path("/hello")
 public class GreetingResource {
 
+	private static final Logger log = LoggerFactory.getLogger(GreetingResource.class);
+
+	@ConfigProperty(name = "images.location")
+	String imageLocation;
+
+	private final static String FILE_NAME = "IMG_3_3M.jpg";
 
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
 	public String hello() {
-		try {
-			URL imageUrl;
-//			imageUrl = GreetingResource.class.getResource("/Resource2.txt");
-			imageUrl = Thread.currentThread().getContextClassLoader().getResource("/Resource2.txt");
-			File file = new File(imageUrl.toURI());
-			return "Hello My Friend! File size in bytes = " + file.length();
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
-			return "Hello My Friend! " + LocalDateTime.now() + ", ERROR!" + e.getMessage();
-		}
+		var imagePath = Paths.get(imageLocation + FILE_NAME);
+		boolean existsAndIsReadable = Files.isReadable(imagePath) && Files.isRegularFile(imagePath);
+		log.info("existsAndIsReadable - {}, imagePath - {}", existsAndIsReadable, imagePath);
+		File file = imagePath.toFile();
+		return "File size is = " + file.length();
 	}
 }

@@ -1,4 +1,5 @@
 *
 !target/*-runner
+!target/classes/images/*.jpg
 !target/*-runner.jar
 !target/lib/*
