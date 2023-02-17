@@ -16,7 +16,7 @@ https://blog.doubleslash.de/how-to-deploy-a-native-quarkus-application-on-heroku
 ## build and run docker image
 `docker build -f src/main/docker/Dockerfile.native -t quarkus/hello-quarkus .`
 
-`docker run -i --rm --name hello_quarkus --env PORT=8081 -p 8081:8081 quarkus/hello-quarkus`
+`docker run -i --rm --name hello_quarkus --env PORT=8080 -p 8080:8080 quarkus/hello-quarkus`
 
 ## open url:
 
